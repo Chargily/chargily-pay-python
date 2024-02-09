@@ -1,0 +1,7 @@
+my_env/
+dist/
+.env
+__pycache__/
+chargily_pay.egg-info/
+.pytest_cache/
+.pypirc

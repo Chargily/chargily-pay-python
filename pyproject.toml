@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chargily_pay"
+version = "0.1.1"
+authors = [{ name = "Berkane Tarek", email = "tarekg320@gmail.com" }]
+description = "This Plugin is to integrate ePayment gateway with Chargily V2 easily."
+readme = "README.md"
+requires-python = ">=3.7"
+keywords = ["chargily", "api", "payment"]
+license = { text = "MIT" }
+classifiers = ["Programming Language :: Python :: 3"]
+dependencies = ["requests==2.31"]
+
+[tool.setuptools.packages.find]
+where = ["src"]                                             # ["."] by default
+exclude = ["chargily_pay.egg-info", "__pycache__", "tests"]
