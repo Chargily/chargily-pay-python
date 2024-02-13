@@ -49,6 +49,8 @@ class Checkout:
     customer_id: str = None
     description: str = None
     locale: str = None
+    payment_method:str=None
+    webhook_endpoint:str=None
     pass_fees_to_customer: bool = None
     metadata: list[dict] = field(default_factory=list)
 
