@@ -1,4 +1,3 @@
-from itertools import product
 import os
 import unittest
 
@@ -37,6 +36,17 @@ class TestChargilyClient(unittest.TestCase):
         )
         response = self.chargily.create_customer(customer)
         self.assertEqual(type(response), dict)
+
+    def test_create_customer_with_phone(self):
+        customer = Customer(
+            name="Username",
+            email="example@gmail.com",
+            phone="12345678",
+            address=Address(address="Address", state="State", country="dz"),
+        )
+        response = self.chargily.create_customer(customer)
+        self.assertEqual(type(response), dict)
+        self.assertEqual(response["phone"], "12345678")
 
     def test_create_customer_without_address(self):
         customer = Customer(
@@ -235,6 +245,49 @@ class TestChargilyClient(unittest.TestCase):
         )
         self.assertEqual(type(checkout), dict)
 
+    def test_create_checkout_with_webhook(self):
+        product = Product(
+            name="Product name",
+            description="Product description",
+        )
+        response = self.chargily.create_product(product)
+        product_id = response["id"]
+        price = self.chargily.create_price(
+            Price(amount=100, currency="dzd", product_id=product_id)
+        )
+        price_id = price["id"]
+        checkout = self.chargily.create_checkout(
+            Checkout(
+                items=[{"price": price_id, "quantity": 1}],
+                success_url="https://example.com/success",
+                failure_url="https://example.com/failure",
+                webhook_endpoint="https://example.com/webhook",
+            )
+        )
+        self.assertEqual(type(checkout), dict)
+        self.assertEqual(checkout["webhook_endpoint"], "https://example.com/webhook")
+
+    def test_create_checkout_with_payment_method(self):
+        product = Product(
+            name="Product name",
+            description="Product description",
+        )
+        response = self.chargily.create_product(product)
+        product_id = response["id"]
+        price = self.chargily.create_price(
+            Price(amount=100, currency="dzd", product_id=product_id)
+        )
+        price_id = price["id"]
+        checkout = self.chargily.create_checkout(
+            Checkout(
+                items=[{"price": price_id, "quantity": 1}],
+                success_url="https://example.com/success",
+                payment_method="cib",
+            )
+        )
+        self.assertEqual(type(checkout), dict)
+        self.assertEqual(checkout["payment_method"], "cib")
+
     def test_create_checkout_with_amount(self):
         checkout = self.chargily.create_checkout(
             Checkout(
@@ -244,8 +297,6 @@ class TestChargilyClient(unittest.TestCase):
             )
         )
         self.assertEqual(type(checkout), dict)
-
-
 
     def test_create_checkout_with_customer(self):
         product = Product(

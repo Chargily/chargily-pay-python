@@ -149,7 +149,7 @@ class ChargilyClient:
         )
         response.raise_for_status()
         return response.json()
-     
+
     # ==================================
     # Prices
     # ==================================
@@ -191,8 +191,6 @@ class ChargilyClient:
         )
         response.raise_for_status()
         return response.json()
-
-
 
     # ==================================
     # Checkouts
@@ -246,7 +244,6 @@ class ChargilyClient:
         )
         response.raise_for_status()
         return response.json()
-
 
     # ==================================
     # Payment Links
@@ -317,6 +314,3 @@ class ChargilyClient:
         if hmac.compare_digest(signature, computed_signature):
             return True
         return False
-
-
-    
