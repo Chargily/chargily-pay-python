@@ -37,6 +37,17 @@ class TestChargilyClient(unittest.TestCase):
         response = self.chargily.create_customer(customer)
         self.assertEqual(type(response), dict)
 
+    def test_create_customer_with_phone(self):
+        customer = Customer(
+            name="Username",
+            email="example@gmail.com",
+            phone="12345678",
+            address=Address(address="Address", state="State", country="dz"),
+        )
+        response = self.chargily.create_customer(customer)
+        self.assertEqual(type(response), dict)
+        self.assertEqual(response["phone"], "12345678")
+
     def test_create_customer_without_address(self):
         customer = Customer(
             name="Username",

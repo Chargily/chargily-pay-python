@@ -13,6 +13,7 @@ class Address:
 class Customer:
     name: str
     email: str
+    phone: Optional[str] = None
     address: Address = None
     metadata: list = field(default_factory=list)
 
@@ -49,8 +50,8 @@ class Checkout:
     customer_id: str = None
     description: str = None
     locale: str = None
-    payment_method:str=None
-    webhook_endpoint:str=None
+    payment_method: str = None
+    webhook_endpoint: str = None
     pass_fees_to_customer: bool = None
     metadata: list[dict] = field(default_factory=list)
 
@@ -61,7 +62,7 @@ class Checkout:
         if self.amount:
             if self.amount <= 10:
                 raise Exception("amount should be great than 10 dzd")
-            if  not self.currency:
+            if not self.currency:
                 raise Exception("Currency must be provided when amount is provided")
 
 
