@@ -37,6 +37,19 @@ class TestChargilyClient(unittest.TestCase):
         response = self.chargily.create_customer(customer)
         self.assertEqual(type(response), dict)
 
+    def test_create_customer_with_exception(self):
+        customer = Customer(
+            name="Username",
+            email="example@gmail.com",
+            address=Address(
+                address="Address", state="State", country="wrong country code"
+            ),
+        )
+        try:
+            response = self.chargily.create_customer(customer)
+        except requests.exceptions.HTTPError as e:
+            self.assertEqual(type(e.response.json()), dict)
+
     def test_create_customer_with_phone(self):
         customer = Customer(
             name="Username",
@@ -452,7 +465,7 @@ class TestChargilyClient(unittest.TestCase):
         self.assertEqual(response["name"], "Payment link name")
         try:
             payment_link.name = "Payment link name 2"
-            response = self.chargily.updata_payment_link(payment_link_id, payment_link)
+            response = self.chargily.update_payment_link(payment_link_id, payment_link)
             self.assertEqual(response["name"], "Payment link name 2")
             raise Exception("Should fail")
         except requests.exceptions.HTTPError as err:
