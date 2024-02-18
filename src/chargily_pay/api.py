@@ -188,13 +188,13 @@ class ChargilyClient:
         return response
 
     @response_or_exception
-    def update_price(self, id, price: Price):
+    def update_price(self, id, metadata: list[dict]):
         """Update a price"""
-        price_dict = asdict_true_value(price)
+
         response = requests.post(
             urljoin(self.url, f"prices/{id}"),
             headers=self.headers,
-            json=price_dict,
+            json={"metadata": metadata},
         )
 
         return response
