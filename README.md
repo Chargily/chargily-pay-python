@@ -3,7 +3,7 @@
 
 Thank you for your interest in Python Package of Chargily Pay™, an open source project by Chargily, a leading fintech company in Algeria specializing in payment solutions and  e-commerce facilitating, this Package is providing the easiest and free way to integrate e-payment API through widespread payment methods in Algeria such as EDAHABIA (Algerie Post) and CIB (SATIM) into your Python/Django projects.
 
-This repository is developed by **[tarek-berkane](https://github.com/tarek-berkane)** and is open to contributions from developers like you.
+This package is developed by **[tarek-berkane](https://github.com/tarek-berkane)** and is open to contributions from developers like you.
 
 ## installation
 ```bash
