@@ -5,6 +5,9 @@ Thank you for your interest in Python Package of Chargily Pay™, an open source
 
 This package is developed by **Tarek Berkane ([tarek-berkane](https://github.com/tarek-berkane))** and is open to contributions from developers like you.
 
+## Requirements
+Chargily-Pay v2 requires `Python 3.7` and above.
+
 ## Installation
 ```bash
 pip install chargily-pay
