@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chargily_pay"
-version = "2.1.0"
+version = "2.1.2"
 authors = [{ name = "Berkane Tarek", email = "tarekg320@gmail.com" }]
 description = "This Plugin is to integrate ePayment gateway with Chargily V2 easily."
 readme = "README.md"
