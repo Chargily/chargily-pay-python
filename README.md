@@ -5,7 +5,7 @@ Thank you for your interest in Python Package of Chargily Pay™, an open source
 
 This package is developed by **Tarek Berkane ([tarek-berkane](https://github.com/tarek-berkane))** and is open to contributions from developers like you.
 
-## installation
+## Installation
 ```bash
 pip install chargily-pay
 ```
@@ -140,7 +140,7 @@ payment_link = chargily.create_payment_link(
 
 ```
 
-# Documentation For frameworks
+## Documentation For frameworks
 
 -   [Django](https://github.com/Chargily/chargily-pay-python/blob/main/docs/examples/django.md)
 
