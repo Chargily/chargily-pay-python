@@ -153,7 +153,7 @@ class WebhookView(View):
         if not signature:
             return HttpResponse(status=400)
 
-        if client.validate_signature(signature, payload):
+        if not client.validate_signature(signature, payload):
             return HttpResponse(status=403)
 
         event = json.loads(payload)
